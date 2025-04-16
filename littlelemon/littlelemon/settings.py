@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'reservation',  # Custom app for reservations
+    'restaurant',  # Custom app for reservations
 ]
 
 MIDDLEWARE = [
