@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'restaurant',  # Custom app for reservations
+    'rest_framework',  # Django REST framework for API
 ]
 
 MIDDLEWARE = [
