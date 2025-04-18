@@ -3,7 +3,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import viewsets, generics
 from rest_framework import permissions
-
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Menu, Booking
 from .serializers import MenuSerializer, BookingSerializer, UserSerializer, User
@@ -60,18 +61,26 @@ class SingleBookingView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = BookingSerializer
     
     
+class UserView(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    
+    
 class IndexView(APIView):
     
     def get(self, request):
         return render(request, 'index.html')  # Render the index.html template
     
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+# class UserView(viewsets.ModelViewSet):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
+#     permission_classes = [permissions.IsAuthenticated]
 
-    def list(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
-        serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data)
+#     def list(self, request, *args, **kwargs):
+#         queryset = self.get_queryset()
+#         serializer = self.get_serializer(queryset, many=True)
+#         return Response(serializer.data)
