@@ -1,5 +1,7 @@
 from django.urls import path
-from .views import MenuView, BookingView, IndexView
+from .views import MenuView, BookingView, IndexView, UserViewSet
+
+
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),  # Home page
