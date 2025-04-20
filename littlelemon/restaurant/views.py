@@ -45,7 +45,7 @@ from .serializers import MenuSerializer, BookingSerializer, UserSerializer, User
 class MenuItemView(generics.ListCreateAPIView):
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
-    
+    permission_classes = [IsAuthenticated]  # Ensure the user is authenticated to access this view
     
 class SingleMenuItemView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Menu.objects.all()
@@ -55,6 +55,7 @@ class SingleMenuItemView(generics.RetrieveUpdateDestroyAPIView):
 class BookingView(generics.ListCreateAPIView):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
+    permission_classes = [IsAuthenticated]  # Ensure the user is authenticated to access this view
     
 class SingleBookingView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Booking.objects.all()
@@ -64,7 +65,7 @@ class SingleBookingView(generics.RetrieveUpdateDestroyAPIView):
 class UserView(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     
     
 class IndexView(APIView):

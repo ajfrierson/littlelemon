@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',  # Django REST framework for API
     'djoser',  # Djoser for user authentication
     'rest_framework.authtoken',  # Token authentication for REST framework
+    
 ]
 
 MIDDLEWARE = [
