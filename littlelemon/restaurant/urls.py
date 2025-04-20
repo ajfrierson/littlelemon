@@ -16,4 +16,6 @@ urlpatterns = [
     path('menu/<int:pk>/', SingleMenuItemView.as_view(), name='menu_item_detail'),  # Single menu item page
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),  # Token authentication endpoint
     path('users/<int:pk>/', UserView.as_view(), name='user_detail'),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken')),  
 ]

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'restaurant',  # Custom app for reservations
     'rest_framework',  # Django REST framework for API
+    'djoser',  # Djoser for user authentication
     'rest_framework.authtoken',  # Token authentication for REST framework
 ]
 
@@ -114,8 +115,11 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     )
 }
+
+DJOSER = {'USER_ID_FIELD': 'username'}
 
 
 # Internationalization
